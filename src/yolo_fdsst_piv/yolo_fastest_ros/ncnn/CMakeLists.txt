@@ -16,6 +16,11 @@ set(CMAKE_BUILD_TYPE "Release")
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 # set(OpenCV_DIR /usr/local/lib/cmake/opencv4/)
+set(cv_bridge_DIR /home/nros/DepandenciesSYZ/lib/cv_bridge_melodic/usr/local/share/cv_bridge/cmake)
+# Set(OpenCV_DIR /usr/local/opencv/opencv-3.4.3/share/OpenCV) 
+# Set(OpenCV_INCLUDE_DIRS "/usr/local/opencv/opencv-3.4.3/include")
+# Set(OpenCV_LIBRARIES "/usr/local/opencv/opencv-3.4.3/lib")
+
 find_package(Eigen3 REQUIRED)
 find_package(PCL 1.7 REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system filesystem)

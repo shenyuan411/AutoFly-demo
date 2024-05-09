@@ -18,8 +18,8 @@
      <node pkg="nodelet" type="nodelet" args="load dyn_object_tracker/PIV $(arg manager_name)"
         name="PIV" output="screen"
         launch-prefix="bash -c 'sleep 1; $0 $@' ">
+		<remap from="/vicon_imu_ekf_odom"  to="/gt_iris_base_link_imu"/> 
     </node>
-<!--remap from="/vicon_imu_ekf_odom"  to="/imu_odom"/-->
 
 
 <node pkg="nodelet" type="nodelet" args="load dyn_object_tracker/PclFilter $(arg manager_name)"

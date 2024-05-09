@@ -1,3 +1,0 @@
-this folder store the results (flvis output) and the gts
-
-evo_traj tum kitti_lc.txt --save_as_kitti
