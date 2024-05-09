@@ -185,7 +185,7 @@ States RosClass::step(double double_n, double yaw_rate, Vector3d pos, Vector3d v
         pos_target.header.frame_id = "map";
         pos_target.header.stamp = ros::Time::now();
         pos_target.coordinate_frame = 1;
-        pos_target.type_mask = 512 + 2048;
+        pos_target.type_mask = 2048;
         pos_target.yaw = double_n;
         // geometry_msgs::Point pos;
         pos_target.position.x = pos(0);

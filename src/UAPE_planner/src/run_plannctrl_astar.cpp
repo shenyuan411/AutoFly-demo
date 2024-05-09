@@ -207,7 +207,7 @@ int main(int argc, char **argv)
       ros::Duration(0.5).sleep();
       do
       {
-        state = flying.step(state.Euler(2) + yaw_rate * 0.5, yaw_rate, ct_pos, Vector3d::Zero(3), Vector3d::Zero(3), "pos_vel_acc_yaw_c");
+        state = flying.step(state.Euler(2) + yaw_rate * 0.5, yaw_rate, ct_pos, Vector3d::Zero(3), Vector3d::Zero(3), "pos_vel_acc_yaw");
         // cout<<"turn to goal: "<< state.Euler(2) + yaw_rate * 0.5 << endl;
         ros::Duration(0.05).sleep();
       } while (abs(state.Euler(2) - desire_yaw) > 0.3);
@@ -221,7 +221,7 @@ int main(int argc, char **argv)
       double yaw_fix = state.Euler(2);
       while ((local_goal * dis_goal).norm() < 0.5)
       {
-        state = flying.step(yaw_fix, 0, ct_pos, Vector3d::Zero(3), Vector3d::Zero(3), "pos_vel_acc_yaw_c");
+        state = flying.step(yaw_fix, 0, ct_pos, Vector3d::Zero(3), Vector3d::Zero(3), "pos_vel_acc_yaw");
         local_goal = {flying.rc_data.ch[1], flying.rc_data.ch[0], 0};
         ros::Duration(0.1).sleep();
         if_end = false;
@@ -234,7 +234,7 @@ int main(int argc, char **argv)
 
       while ((local_goal * dis_goal).norm() < 2.0)
       {
-        state = flying.step(yaw_fix, 0, state.P_E + local_goal, Vector3d::Zero(3), Vector3d::Zero(3), "pos_vel_acc_yaw_c");
+        state = flying.step(yaw_fix, 0, state.P_E + local_goal, Vector3d::Zero(3), Vector3d::Zero(3), "pos_vel_acc_yaw");
         local_goal = {flying.rc_data.ch[1], flying.rc_data.ch[0], clip(flying.rc_data.ch[3], -0.3, 0.3)};
         ros::Duration(0.1).sleep();
         if_end = false;
@@ -260,7 +260,7 @@ int main(int argc, char **argv)
       while (abs(state.Euler(2) - desire_yaw) > 0.3 && if_initial)
         ;
       {
-        state = flying.step(state.Euler(2) + yaw_rate * 0.5, yaw_rate, ct_pos, Vector3d::Zero(3), Vector3d::Zero(3), "pos_vel_acc_yaw_c");
+        state = flying.step(state.Euler(2) + yaw_rate * 0.5, yaw_rate, ct_pos, Vector3d::Zero(3), Vector3d::Zero(3), "pos_vel_acc_yaw");
         ros::Duration(0.05).sleep();
       }
       reference.config.velMax = clip(flying.rc_data.ch[2] + 1, 0.3, 2.0);
@@ -536,7 +536,7 @@ int main(int argc, char **argv)
 
     if (ifMove)
     {
-      state = flying.step(desire_psi[0], desire_psi[1], p_d, v_d, a_d, "pos_vel_acc_yaw_c");
+      state = flying.step(desire_psi[0], desire_psi[1], p_d, v_d, a_d, "pos_vel_acc_yaw");
       // reference.get_traj_samples(sp_pos, sp_vel,sp_acc, (ros::Time::now() - traj_last_t).toSec());
     }
     // else{reference.get_traj_samples(sp_pos, sp_vel,sp_acc, 0.0);}
